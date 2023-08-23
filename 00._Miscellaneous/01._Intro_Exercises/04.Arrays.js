@@ -6,7 +6,7 @@
 const letters = ["a","b","c"];
 // show b in the console 
 
-const elementToShow = letters[1];
+const elementToShow = letters.find(element => element == "b"); // letters[1] is simpler but is bracket notation?
 console.log(elementToShow);
 
 // --------------------------------------
@@ -19,7 +19,8 @@ const friends = [];
 const friend1 = { name: "Ali"};
 const friend2 = { name: "Bob"};
 const friend3 = { name: "Cal"};
-friends.push('friend1', 'friend2', 'friend3');
+friends.push(friend1, friend2, friend3);
+console.log(friends);
 
 // --------------------------------------
 // Exercise 3 - Get the index of first occurance of that value. 
