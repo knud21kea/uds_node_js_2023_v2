@@ -29,7 +29,7 @@ mountains.push({
     description: "The highest mountain in the Alps and Western Europe."
 });
 
-let lastID = 3; // Global variable ;)
+let lastID = 3; // Global variable but used to simulate auto incremantation in the DB
 
 /* test data for POST mapping in Postman
 {
@@ -57,7 +57,7 @@ app.use(express.json()); // enables POST
 // ----------------------------------------------------------------------------------------------
 // API
 
-//Endpoint to send all mountains via HTTP GET mapping
+// Endpoint to send all mountains via HTTP GET mapping
 app.get("/mountains", (req, res) => {
     res.send(mountains);
 });
@@ -88,7 +88,7 @@ app.post("/mountains", (req, res) => {
 // API design is changed from the original PUT. Not sure if both are required.
 app.patch("/mountains/:id", (req, res) => {
     const indexOfMountainToUpdate = mountains.findIndex(mountain => mountain.id === parseInt(req.params.id));
-    if (indexOfMountainToDelete > -1) {
+    if (indexOfMountainToUpdate > -1) {
         mountains[indexOfMountainToUpdate] = { ...mountains[indexOfMountainToUpdate], ...req.body };
         res.send({ updated: mountains[indexOfMountainToUpdate] });
     } else {
