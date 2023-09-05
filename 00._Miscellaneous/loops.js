@@ -1,21 +1,18 @@
-const rocks = [
-    { name: "Pet rock", age: 2},
-    { name: "Led Zeppelin" , age: 50},
-    { name: "Dwayne Johnson", age: 47 },
-    { name: "Neptune", age: 100000 }]
-
-    console.log(rocks);
+const trolls = [
+    { name: "anonymous", trollLevel: 9},
+    { name: "krooleboolle" , trollLevel: 22},
+    { name: "krolleline", trollLevel: 27 },
+    ];
 
     // loop methods: map, filter, find, reduce, sort,forEach
 
-    //console.log( {...rocks[0]});
-
-    // assignment make all the rocks one year older and save the value to rocksAgedOneYear
-    
-
-    const rocksAgedOneYear = rocks.map(rock => {        
-        return { name: rock.name, age: rock.age +1};
-        // return { ...rock, age: rock.age+1}; spread function ??
+    const trollsLevelPlus5 = trolls.map(troll => {        
+        return { name: troll.name, trollLevel: troll.trollLevel +5};
+        //({ ...trolls, trollLevel: troll.trollLevel += 5});
     });
 
-    console.log(rocksAgedOneYear);
+    console.log(trollsLevelPlus5);
+
+    const oddLeveledTrolls = trollsLevelPlus5.filter(troll => (troll.trollLevel  %2 === 1));
+
+    console.log(oddLeveledTrolls);
