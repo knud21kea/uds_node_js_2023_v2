@@ -59,15 +59,15 @@ app.use(express.json()); // enables POST
 
 // Endpoint to send all mountains via HTTP GET mapping
 app.get("/mountains", (req, res) => {
-    res.send(mountains);
+    res.send({ data: mountains} );
 });
 
 
 // Endpoint to send the mountain with 'id: id' via HTTP GET mapping
 app.get("/mountains/:id", (req, res) => {
-    const mountainToGet = mountains.find(mountain => mountain.id === parseInt(req.params.id)); // returns undefined if no mountain with that id
+    const mountainToGet = mountains.find((mountain) => mountain.id === parseInt(req.params.id)); // returns undefined if no mountain with that id
     if (mountainToGet) {
-        res.send(mountainToGet);
+        res.send({ data: mountainToGet });
     } else {
         res.send({ error: "Mountain not found. " })
     }
@@ -87,7 +87,7 @@ app.post("/mountains", (req, res) => {
 // Endpoint to update the mountain with 'id: id' via HTTP PATCH mapping
 // API design is changed from the original PUT. Not sure if both are required.
 app.patch("/mountains/:id", (req, res) => {
-    const indexOfMountainToUpdate = mountains.findIndex(mountain => mountain.id === parseInt(req.params.id));
+    const indexOfMountainToUpdate = mountains.findIndex((mountain) => mountain.id === parseInt(req.params.id));
     if (indexOfMountainToUpdate > -1) {
         mountains[indexOfMountainToUpdate] = { ...mountains[indexOfMountainToUpdate], ...req.body };
         res.send({ updated: mountains[indexOfMountainToUpdate] });
@@ -117,7 +117,7 @@ app.delete("/mountains/:id", (req, res) => {
 const PORT = 8080;
 app.listen(PORT, (error) => {
     if (error) {
-        console.log(error);
+        console.log("Server not started", error);
         return;
     }
     console.log("Server is running on port", PORT);

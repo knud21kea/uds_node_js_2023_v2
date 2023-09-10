@@ -1,5 +1,6 @@
 const express = require("express"); // express is a package, it has no extension like .js
 const app = express(); // calls create aplication function
+app.use(express.json()); // body parser
 
 //API
 
@@ -15,6 +16,10 @@ app.get("/dog/:id", (req, res) => {
     res.send({ message: `vuf` });
 })
 
+app.get("/cat", (req, res) => {
+    res.send({ data: `The cats name is ${req.query.name}, and type is ${req.query.type}`})
+})
+
 let balance = 100;
 app.get("/wallet/:withdrawalAmount", (req, res) => {
     balance -= req.params.withdrawalAmount;
@@ -25,6 +30,10 @@ app.get("/wallet/:withdrawalAmount", (req, res) => {
     }
     
 })
+
+app.post("/giveMeTheBody", (req, res) => {
+    res.send(req.body);
+});
 
 
 
